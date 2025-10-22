@@ -9,6 +9,12 @@
     Wake-on-LAN (WOL) magic packet to power it on and waits until the server responds to ping.
     Once the server is reachable, the script reports success and prompts the user before exiting.
 
+.USAGE
+    If your system blocks unsigned scripts, launch it via the companion
+    `Start-ProxmoxServer.cmd` file included in this repository. The CMD shortcut calls
+    PowerShell 7 with `-ExecutionPolicy Bypass`, which avoids the "digitally unsigned"
+    error shown on default Windows installations.
+
 .PARAMETER ServerAddress
     The IPv4 or host name of the Proxmox server that should respond to ICMP echo (ping).
 
