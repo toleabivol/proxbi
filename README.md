@@ -71,3 +71,37 @@ Build a server with multiple GPU-powered virtual machines — perfect for famili
 ## Quick Start
 
 (WIP)
+
+## Setup Instructions
+
+### Wake-on-LAN (WoL)
+Wake-on-LAN (WoL) is a networking standard that allows a computer to be turned on or woken from a low-power state by a special network message called a "magic packet". 
+To use it, the target computer's motherboard and network adapter must support WoL, and the computer must remain connected to a power source, even when shut down. 
+The feature must also be enabled in the computer's BIOS/UEFI and the network adapter's settings.
+
+1. Enable WoL
+   1. from BIOS. Depending on your Motherboard enter BIOS and:
+      - enable the option like `Power On By PCI-E / PCI`
+      - and disable `ErP Ready` (this one cuts power to NIC when server stopped)
+   2. in proxmox linux (if not already):
+      - `ethtool <your-nic>` You should see `Supports Wake-on: pumbg` `Wake-on: g` if not :
+        - edit `nano /etc/network/interfaces` and add these 2 lines under your interface `<your nic>`:
+          - `post-up /usr/sbin/ethtool -s eno1 wol g`
+          - `post-down /usr/sbin/ethtool -s eno1 wol g`
+
+2. Use a WoL client
+   - Windows
+     - GUI
+       - From MS Store search for any WoL or MagicPacket client e.g. https://apps.microsoft.com/detail/9wzdncrcw1mx (tested by me on Windows 10/11)
+       - https://github.com/basildane/WakeOnLAN/releases/tag/2.12.4 (tested by me on Win 10)
+     - PowerShell
+       - https://gist.github.com/alimbada/4949168
+       - You can make a shortcut in windows 
+   - Linux
+     - GUI
+       - https://github.com/muflone/gwakeonlan/ (also from App Center) (tested by me on Ubuntu 24)
+       - Ampare Wake on LAN (from App Center) (did not open on my Ubuntu also size too big ~109MB)
+     - Terminal
+       - wakeonlan (tested by me on Ubuntu 24)
+         - `sudo apt install wakeonlan`
+         - `wakeonlan <mac address of the server>`
