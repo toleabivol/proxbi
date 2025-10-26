@@ -3,6 +3,7 @@
 (WIP) 
 
 Build a server with multiple GPU-powered virtual machines — perfect for families, classrooms, and homelab enthusiasts.
+I personally used it for a server for my 3 kids so I do not have to buy a separate PC for each of them and learn something new - in the end it was a successful and interesting project.
 
 ---
 
@@ -54,6 +55,8 @@ Build a server with multiple GPU-powered virtual machines — perfect for famili
 
 ## Hardware Requirements
 > **Tip:** Think about future expansions
+
+Server:
 - Case with enough space for all components
   - Fans and airflow to keep it cool
   - noise/quietness grade depending on where the server will be placed 
@@ -63,8 +66,12 @@ Build a server with multiple GPU-powered virtual machines — perfect for famili
 - 1+ GPUs for passthrough. One for each user/VM.
 - Sufficient RAM (recommend ≥14GB per user/VM).
 - [Proxmox VE 9.x compatible server](https://www.proxmox.com/en/products/proxmox-virtual-environment/requirements)
-- Thin clients or remote desktop clients for users (mini-PC, laptop, PC, mac etc.)
 - Enough storage. Preferable SSD or M2.
+
+Clients:
+- Thin clients or remote desktop clients for users (mini-PC, laptop, PC, Mac, Mobile etc.)
+- Windows 10/11 , Mac, IOS, Android
+- 8GB RAM
 
 ---
 
@@ -73,6 +80,49 @@ Build a server with multiple GPU-powered virtual machines — perfect for famili
 (WIP)
 
 ## Setup Instructions
+
+### Setup server
+1. Enable IOMMU / VT-d in BIOS then reboot
+2. Install Proxmox on your server
+    - Finally you should be able to access your Proxmox console
+3. Create Windows VMs
+   - Use UEFI, Q35 and VirtIO drivers
+   - Install the VirtIO ISO for network and disk drivers
+   - Install virtual audio driver e.g. https://vb-audio.com/Cable/
+4. Passthrough GPUs to VMs. On the proxmox server cli (either in proxmox console>pve node>terminal or ssh into your server) execute:
+   - `nano /etc/default/grub` and edit the line 
+     - for AMD `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
+     - for Intel `GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"`
+   - `update-grub`
+   - `reboot`
+   - `nano /etc/modules` and add these lines if not already present
+     - vfio
+     - vfio_pci
+     - vfio_iommu_type1
+     - vfio_virqfd
+   - `lspci -nn | grep -E "VGA|Audio"` and note the ids of the GPU VGA and Audio device pairs of each GPU. Something like `01.00.0` and `01:00.1` also `10de:1f08` and `10de:10f9`
+   - `nano /etc/modprobe.d/vfio.conf` and add `options vfio-pci ids=10de:1f08,10de:10f9` replace with your ids, add all pairs.
+   - `nano /etc/modprobe.d/blacklist.conf` and add: 
+     - `blacklist nouveau`
+     - `blacklist nvidia`
+     - `blacklist nvidiafb`
+     - `blacklist nvidia_drm`
+   - `update-initramfs -u -k all`
+   - Repeat this for each VM and GPU pair (VMID is the id you gave your VM upon creation) :
+     - `nano /etc/pve/qemu-server/<VMID>.conf` and add the following lines replacing the ids with your GPU id
+       - `hostpci0: 01:00.0,pcie=1,x-vga=1`
+       - `hostpci1: 01:00.1`
+   - `reboot`
+   - Login to VM (using proxmox console or parsec) and install the GPU driver from the official provider. You shuld see the GPU in the device manager.
+
+5. Install Parsec and configure as host. For each thin client (mini-pc or laptop) login into VM and then:
+   - Download from parsec.app
+   - Open and login to parsec. (use separate accounts if you want to separate which VMs each thin client can access)
+
+### Setup Thin clients 
+1. If you have no OS on your client yet : install OS. I used Windows 11.
+2. Install Parsec on your thin clients
+3. Login to your VM via Parsec
 
 ### Wake-on-LAN (WoL)
 Wake-on-LAN (WoL) is a networking standard that allows a computer to be turned on or woken from a low-power state by a special network message called a "magic packet". 
