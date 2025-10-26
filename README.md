@@ -77,14 +77,14 @@ Clients:
 
 ## Quick Start
 
-(WIP)
+(WIP - proxmox templates or repo)
 
 ## Setup Instructions
 
 ### Setup server
 1. Enable IOMMU / VT-d in BIOS then reboot
 2. Install Proxmox on your server
-    - Finally you should be able to access your Proxmox console
+    - Finally, you should be able to access your Proxmox console
 3. Create Windows VMs
    - Use UEFI, Q35 and VirtIO drivers
    - Install the VirtIO ISO for network and disk drivers
