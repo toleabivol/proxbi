@@ -89,7 +89,7 @@ Clients:
    - Use UEFI, Q35 and VirtIO drivers
    - Install the VirtIO ISO for network and disk drivers
    - Install virtual audio driver e.g. https://vb-audio.com/Cable/
-4. Passthrough GPUs to VMs. On the proxmox server cli (either in proxmox console>pve node>terminal or ssh into your server) execute:
+4. Passthrough GPUs to VMs. On the proxmox server cli (either in proxmox console > pve node > terminal or ssh into your server) execute:
    - `nano /etc/default/grub` and edit the line 
      - for AMD `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
      - for Intel `GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"`
@@ -118,6 +118,7 @@ Clients:
 5. Install Parsec and configure as host. For each thin client (mini-pc or laptop) login into VM and then:
    - Download from parsec.app
    - Open and login to parsec. (use separate accounts if you want to separate which VMs each thin client can access)
+   - Set parsec to use at least 50 Mbps bandwidth (max available in free version) and use client resolution
 
 ### Setup Thin clients 
 1. If you have no OS on your client yet : install OS. I used Windows 11.
