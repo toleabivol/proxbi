@@ -1,6 +1,5 @@
 
-# ProxBi
-(WIP) 
+# ProxBi 
 
 Build a server with multiple GPU-powered virtual machines — perfect for families, classrooms, and homelab enthusiasts.
 I personally used it for a server for my 3 kids so I do not have to buy a separate PC for each of them and learn something new - in the end it was a successful and interesting project.
@@ -11,12 +10,12 @@ I personally used it for a server for my 3 kids so I do not have to buy a separa
 1. [Overview](#overview)
 2. [Features](#features)
 3. [Hardware Requirements](#hardware-requirements)
-4. [Quick Start](#quick-start)
+4. [Quick / Automated Start](#quick-or-automated-start)
 5. [Setup Instructions](#setup-instructions)
 6. [Templates & Scripts](#templates--scripts)
-7. [Demo & YouTube Videos](#demo--youtube-videos)
+7. [Demo & Video](#demo--video)
 8. [Support & Sponsorship](#support--sponsorship)
-9. [License](#license)
+9. [Bonus](#bonus)
 
 ---
 
@@ -56,7 +55,8 @@ I personally used it for a server for my 3 kids so I do not have to buy a separa
 ## Hardware Requirements
 > **Tip:** Think about future expansions
 
-Server:
+### Server
+You can see [our build specs here bellow](#build-specs) specifically made for this purpose.
 - Case with enough space for all components
   - Fans and airflow to keep it cool
   - noise/quietness grade depending on where the server will be placed 
@@ -68,7 +68,7 @@ Server:
 - [Proxmox VE 9.x compatible server](https://www.proxmox.com/en/products/proxmox-virtual-environment/requirements)
 - Enough storage. Preferable SSD or M2.
 
-Clients:
+### Clients
 - Thin clients or remote desktop clients for users (mini-PC, laptop, PC, Mac, Mobile etc.)
 - Hardware requirements:
   - Anything that would support h264 decoding and 50Mbps network
@@ -77,9 +77,10 @@ Clients:
 
 ---
 
-## Quick Start
+## Quick or Automated Start
 
-(WIP - proxmox templates or repo)
+(WIP - proxmox templates or repo for automation of the bellow steps. For now try to follow the guide bellow and keep an eye on updates to this repo.)
+The details of these automations can be found at [Templates & Scripts](#templates--scripts).
 
 ## Setup Instructions
 
@@ -176,3 +177,29 @@ The feature must also be enabled in the computer's BIOS/UEFI and the network ada
        - wakeonlan (tested by me on Ubuntu 24)
          - `sudo apt install wakeonlan`
          - `wakeonlan <mac address of the server>`
+
+## Templates & Scripts
+(WIP - details of proxmox templates or repo for automation. What each do and what are the parameters/configuration etc.)
+
+## Demo & Video
+(WIP)
+
+## Support & Sponsorship
+Buy me and my kids some [tea](https://github.com/sponsors/toleabivol) and get gratitude and private support from us :)
+
+## Bonus
+This is how our server looks like.
+![server-real-pic.jpg](assets/img/server-real-pic.jpg)
+
+### Build specs:
+- MB: [ASUS TUF GAMING B650-PLUS Mainboard Socket AMD AM5](https://amzn.to/4oFP3lY)
+- CPU: [AMD Ryzen 9 7900 12 Cores 24 Threads](https://amzn.to/43BxECP)
+- RAM: [Patriot Viper Xtreme 5 DDR5 RAM 32GB (2X16GB) 6000MT/s CL30](https://amzn.to/47IWyml)
+- GPU: 2 x Nvidia GTX 2060 6GB (bought used from kleinanzeigen.de)
+- Storage:
+  - SSD (for proxmox/host OS) - 256GB (had one from a laptop)
+  - NVME (for VMs) - [1TB Samsung 990 EVO Plus](https://amzn.to/4nmEPpt)
+- PSU: [Thermaltake Toughpower GT 850W](https://amzn.to/4hvL7C3)
+- Case: [NZXT H7 Flow](https://amzn.to/4ofgJ1l)
+
+*Links have affiliate id that bring me some commission in case you purchase. 
