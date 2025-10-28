@@ -192,7 +192,7 @@ This is how our server looks like.
 ![server-real-pic.jpg](assets/img/server-real-pic.jpg)
 
 ### Build specs:
-- MB: [ASUS TUF GAMING B650-PLUS Mainboard Socket AMD AM5](https://amzn.to/4oFP3lY)
+- MB: [ASUS TUF GAMING B650-PLUS Mainboard Socket AMD AM5](https://amzn.to/4oFP3lY) - this one has 2 PCIE slots , one with PCI5 x16 and one PCI4 x4 . Therefore be careful what GPU you load into it as the second one might get capped. Or buy another MB that supports multiple PICE at x16.
 - CPU: [AMD Ryzen 9 7900 12 Cores 24 Threads](https://amzn.to/43BxECP)
 - RAM: [Patriot Viper Xtreme 5 DDR5 RAM 32GB (2X16GB) 6000MT/s CL30](https://amzn.to/47IWyml)
 - GPU: 2 x Nvidia RTX 2060 6GB (bought used from kleinanzeigen.de)
