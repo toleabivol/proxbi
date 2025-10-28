@@ -195,7 +195,7 @@ This is how our server looks like.
 - MB: [ASUS TUF GAMING B650-PLUS Mainboard Socket AMD AM5](https://amzn.to/4oFP3lY)
 - CPU: [AMD Ryzen 9 7900 12 Cores 24 Threads](https://amzn.to/43BxECP)
 - RAM: [Patriot Viper Xtreme 5 DDR5 RAM 32GB (2X16GB) 6000MT/s CL30](https://amzn.to/47IWyml)
-- GPU: 2 x Nvidia GTX 2060 6GB (bought used from kleinanzeigen.de)
+- GPU: 2 x Nvidia RTX 2060 6GB (bought used from kleinanzeigen.de)
 - Storage:
   - SSD (for proxmox/host OS) - 256GB (had one from a laptop)
   - NVME (for VMs) - [1TB Samsung 990 EVO Plus](https://amzn.to/4nmEPpt)
