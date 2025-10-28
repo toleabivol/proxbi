@@ -105,8 +105,8 @@ The details of these automations can be found at [Templates & Scripts](#template
      - (Optional, can be done later) Install Parsec and configure as host (see details in step bellow)
 4. Passthrough GPUs to VMs. On the proxmox server cli (either in proxmox console > pve node > terminal or ssh into your server) execute:
    - `nano /etc/default/grub` and edit the line 
-     - for AMD `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
-     - for Intel `GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"`
+     - for Intel `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
+     - for AMD `GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"`
    - `update-grub`
    - `reboot`
    - `nano /etc/modules` and add these lines if not already present
