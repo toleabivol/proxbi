@@ -70,8 +70,10 @@ Server:
 
 Clients:
 - Thin clients or remote desktop clients for users (mini-PC, laptop, PC, Mac, Mobile etc.)
-- Windows 10/11 , Mac, IOS, Android
-- 8GB RAM
+- Hardware requirements:
+  - Anything that would support h264 decoding and 50Mbps network
+  - Windows 10/11 , Mac, IOS, Android
+  - 8GB RAM
 
 ---
 
@@ -86,9 +88,20 @@ Clients:
 2. Install Proxmox on your server
     - Finally, you should be able to access your Proxmox console
 3. Create Windows VMs
-   - Use UEFI, Q35 and VirtIO drivers
-   - Install the VirtIO ISO for network and disk drivers
-   - Install virtual audio driver e.g. https://vb-audio.com/Cable/
+   - General: give a name and an id to the VM
+   - OS: Use an ISO with Win11, guet OS "Microsoft Windows" and select the appropriate version from your ISO. Check the VirtIO drivers and select the appropriate iso for them "virtio drivers"
+   - System: select UEFI, Q35 and Graphic card: Default, Quemu Agent - ON, EFI and TPM (choose a storage for them - can be same as the disk)
+   - Disks: leave defaults (SCSI)
+   - CPU: Sockets 1, Type "host". Cores - give enough Cores you canuse this formula ( TOTAL CORES - 2 for proxmox ) / Number of VMs
+   - Memory: give enough RAM. You can use this formula : ( TOTAL RAM - 2GB for proxmox ) / Number of VMs .
+   - Network: leave defaults  
+![proxmox-VM-Hardware.jpg](assets/img/proxmox-VM-Hardware.jpg)
+   - Repeat the above stems and create all VMs
+![proxmox-node-view.jpg](assets/img/proxmox-node-view.jpg)
+   - Connect to the VM from the proxmox console (for now do not worry about missing GPU and bad resolution or lag):
+     - Install the VirtIO ISO for network and disk drivers from the inserted virtual CD with virtio.
+     - Install virtual audio driver e.g. https://vb-audio.com/Cable/ -> this will allow audio passthrough and you should hear audio now from your VM.
+     - (Optional, can be done later) Install Parsec and configure as host (see details in step bellow)
 4. Passthrough GPUs to VMs. On the proxmox server cli (either in proxmox console > pve node > terminal or ssh into your server) execute:
    - `nano /etc/default/grub` and edit the line 
      - for AMD `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
@@ -113,17 +126,24 @@ Clients:
        - `hostpci0: 01:00.0,pcie=1,x-vga=1`
        - `hostpci1: 01:00.1`
    - `reboot`
-   - Login to VM (using proxmox console or parsec) and install the GPU driver from the official provider. You shuld see the GPU in the device manager.
+   - In proxmox console you should now see the PCI devices for each VM (do not edit them in the console)
+![proxmox-VM-Harware-PCI.png](assets/img/proxmox-VM-Harware-PCI.png)
+   - Login to VM (using proxmox console or parsec if installed above) and install the GPU driver from the official provider. You should see the GPU in the device manager.
 
 5. Install Parsec and configure as host. For each thin client (mini-pc or laptop) login into VM and then:
    - Download from parsec.app
    - Open and login to parsec. (use separate accounts if you want to separate which VMs each thin client can access)
-   - Set parsec to use at least 50 Mbps bandwidth (max available in free version) and use client resolution
+   - In Parsec settings set it to use at least 50 Mbps bandwidth (max available in free version) and use client resolution
 
 ### Setup Thin clients 
 1. If you have no OS on your client yet : install OS. I used Windows 11.
 2. Install Parsec on your thin clients
 3. Login to your VM via Parsec
+
+### Test the setup
+Install some games or GPU heavy apps and see how it goes. 
+You can view some stats (no GPU stats) in the proxmox node > Summary
+![proxmox-node-summary.png](assets/img/proxmox-node-summary.png)
 
 ### Wake-on-LAN (WoL)
 Wake-on-LAN (WoL) is a networking standard that allows a computer to be turned on or woken from a low-power state by a special network message called a "magic packet". 
