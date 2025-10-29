@@ -88,8 +88,8 @@ The details of these automations can be found at [Templates & Scripts](#template
 
 ### Setup server
 1. Enable IOMMU / VT-d in BIOS then reboot
-2. Install Proxmox on your server
-    - Finally, you should be able to access your Proxmox console
+2. [Install Proxmox on your server](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started)
+    - Finally, you should be able to access your Proxmox console via browser
 3. Create Windows VMs
    - General: give a name and an id to the VM
    - OS: Use an ISO with Win11, guet OS "Microsoft Windows" and select the appropriate version from your ISO. Check the VirtIO drivers and select the appropriate iso for them "virtio drivers"
