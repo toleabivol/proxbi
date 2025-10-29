@@ -16,7 +16,8 @@ I personally used it for a server for my 3 kids so I do not have to buy a separa
 7. [Templates & Scripts](#templates--scripts)
 8. [Demo & Video](#demo--video)
 9. [Support & Sponsorship](#support--sponsorship)
-10. [Bonus](#bonus)
+11. [Tests & Benchmarks](#tests--benchmarks) 
+12. [Bonus](#bonus)
 
 ---
 
@@ -216,7 +217,7 @@ I also created my own list of websites to be blocked in addition to the already 
 ## Support & Sponsorship
 Buy me and my kids some [tea](https://github.com/sponsors/toleabivol) and get gratitude and private support from us :)
 
-## Tests and Benchmarks
+## Tests & Benchmarks
 (WIP - for now just a test with visual feeling no numbers, will do real benchmarks later)
 ### Games tests
 
