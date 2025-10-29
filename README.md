@@ -12,10 +12,11 @@ I personally used it for a server for my 3 kids so I do not have to buy a separa
 3. [Hardware Requirements](#hardware-requirements)
 4. [Quick / Automated Start](#quick-or-automated-start)
 5. [Setup Instructions](#setup-instructions)
-6. [Templates & Scripts](#templates--scripts)
-7. [Demo & Video](#demo--video)
-8. [Support & Sponsorship](#support--sponsorship)
-9. [Bonus](#bonus)
+6. [Parental Controls](#parental-controls)
+7. [Templates & Scripts](#templates--scripts)
+8. [Demo & Video](#demo--video)
+9. [Support & Sponsorship](#support--sponsorship)
+10. [Bonus](#bonus)
 
 ---
 
@@ -178,6 +179,34 @@ The feature must also be enabled in the computer's BIOS/UEFI and the network ada
          - `sudo apt install wakeonlan`
          - `wakeonlan <mac address of the server>`
 
+## Parental Controls
+
+>This is for basic controls and won't prevent 100% kids to "misbehave" or accidentally view/access something unrelated for their age. You should actively check on them and discuss these matters as you do with any topic in a family. If it makes the kids a little bit safer - do it!  
+
+### Windows:
+1. Create a family on [Microsoft Safety](https://account.microsoft.com/family/home)
+2. Add all family members
+   - Configure for each the security needed (e.g. allowed gaming time, blocked apps)
+3. On the Windows thin client and same for VMs:
+   1. sign in with your parent account (it should be the Admin) and set a PIN for it. Do not share it with the kids (otherwise it's a useless setup and you can just set the kid as Admin).
+   2. Go to Windows Settings > Accounts > Family > Select the family members that can log in. Do not add separate accounts in another way as it won't let you manage them through MS Family Safety app!
+   3. Sign out and sign in to the child account. It will ask to create a PIN - use another PIN and share with the child or let the kid create it's own.
+4. On the Windows thin client have nothing but
+5. For browsing safety use Edge and log in with child account. Block installation of other apps without your consent or PIN this way they can't install other browsers where they are not signed in with their user.
+6. Install the Family Safety app on your smartphone or use the web page above to manage or view security risks, add time etc.
+7. For YouTube
+   1. Create a family on [Google Account > People & sharing > Your Family on Google](https://myaccount.google.com/family/details) or visit [Google Families Homepage](https://families.google/families/) and click on Get Started.
+   2. Each child gets a google account and you as a parent manage the family. You can add spouse as well as family manager.
+   3. Configure for each child the safety settings.
+   4. In the Edge log them into their Google account and visit YouTube and make sure it's logged in.
+   5. (Optionally) Install an add block extension for Edge
+   6. (Optionally) Install an YouTube layout changing extension for Edge (e.g. [Enhancer for YouTube](https://chromewebstore.google.com/detail/enhancer-for-youtube/ponfpcnoihfmfllpaingbgckeeldkhle)) and remove Shorts (I hate those things and think they are not good for anyone and more so for the kids)
+
+### Network / Router
+For generic safety, if your router supports it - enable child profiles for each VM and the thin client device. 
+On a Fritz!Box it is located under Internet>Filter>Child Security. 
+I also created my own list of websites to be blocked in addition to the already installed and managed by the German Government (BPjM-Module from BzKJ).   
+
 ## Templates & Scripts
 (WIP - details of proxmox templates or repo for automation. What each do and what are the parameters/configuration etc.)
 
@@ -186,6 +215,53 @@ The feature must also be enabled in the computer's BIOS/UEFI and the network ada
 
 ## Support & Sponsorship
 Buy me and my kids some [tea](https://github.com/sponsors/toleabivol) and get gratitude and private support from us :)
+
+## Tests and Benchmarks
+(WIP - for now just a test with visual feeling no numbers, will do real benchmarks later)
+### Games tests
+
+Test setup :
+- same game and version running actively (someone is playing it stressing the GPU at max possibility) on 2 VMs in parallel (at the same time) 
+- maximum graphic quality in game settings
+- FHD / 1080p
+
+One VM summary/load during the game tests, hour (maximum):
+![proxmox-VM-summary-games-test.png](assets/img/proxmox-VM-summary-games-test.png)
+
+Server summary/load during the game tests, hour (maximum):
+![proxmox-node-summary-games-test.png](assets/img/proxmox-node-summary-games-test.png)
+
+#### Fishing Planet
+- lag - none
+- FPS - TBD
+#### Minecraft Bedrock/Java
+- lag - none
+- FPS - TBD
+>In some mods with JAVA with Curseforge it jitters when moving but that I think is not from the proxBi (this guide) setup.
+
+#### Jurassic World Evolution
+- lag - none
+- FPS - TBD
+
+#### CS2
+- lag - TBD
+- FPS - TBD
+- Anti Cheat - TBD
+#### War Thunder
+- lag - TBD
+- FPS - TBD
+- Anti Cheat - TBD
+#### Fortnite
+- lag - TBD
+- FPS - TBD
+- Anti Cheat - TBD
+#### Apex
+- lag - TBD
+- FPS - TBD
+- Anti Cheat - TBD
+
+### 3D BenchMarks
+TBD
 
 ## Bonus
 This is how our server looks like.
