@@ -106,8 +106,8 @@ The details of these automations can be found at [Templates & Scripts](#template
      - (Optional, can be done later) Install Parsec and configure as host (see details in step bellow)
 4. Passthrough GPUs to VMs. On the proxmox server cli (either in proxmox console > pve node > terminal or ssh into your server) execute:
    - `nano /etc/default/grub` and edit the line 
-     - for AMD `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
-     - for Intel `GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"`
+     - for Intel `GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"`
+     - for AMD `GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"`
    - `update-grub`
    - `reboot`
    - `nano /etc/modules` and add these lines if not already present
@@ -268,10 +268,10 @@ This is how our server looks like.
 ![server-real-pic.jpg](assets/img/server-real-pic.jpg)
 
 ### Build specs:
-- MB: [ASUS TUF GAMING B650-PLUS Mainboard Socket AMD AM5](https://amzn.to/4oFP3lY)
+- MB: [ASUS TUF GAMING B650-PLUS Mainboard Socket AMD AM5](https://amzn.to/4oFP3lY) - this one has 2 PCIE slots , one with PCI5 x16 and one PCI4 x4 . Therefore be careful what GPU you load into it as the second one might get capped. Or buy another MB that supports multiple PICE at x16.
 - CPU: [AMD Ryzen 9 7900 12 Cores 24 Threads](https://amzn.to/43BxECP)
 - RAM: [Patriot Viper Xtreme 5 DDR5 RAM 32GB (2X16GB) 6000MT/s CL30](https://amzn.to/47IWyml)
-- GPU: 2 x Nvidia GTX 2060 6GB (bought used from kleinanzeigen.de)
+- GPU: 2 x Nvidia RTX 2060 6GB (bought used from kleinanzeigen.de)
 - Storage:
   - SSD (for proxmox/host OS) - 256GB (had one from a laptop)
   - NVME (for VMs) - [1TB Samsung 990 EVO Plus](https://amzn.to/4nmEPpt)
