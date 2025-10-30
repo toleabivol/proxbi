@@ -225,6 +225,8 @@ Test setup :
 - same game and version running actively (someone is playing it stressing the GPU at max possibility) on 2 VMs in parallel (at the same time) 
 - maximum graphic quality in game settings
 - FHD / 1080p
+- One Monitor per thin client
+- Where you see host and client metric it means that host is the server and client is the thin client. For FPS you just take the lowest value from these 2 as that is the bottleneck.
 
 One VM summary/load during the game tests, hour (maximum):
 ![proxmox-VM-summary-games-test.png](assets/img/proxmox-VM-summary-games-test.png)
@@ -242,8 +244,10 @@ Server summary/load during the game tests, hour (maximum):
 
 #### Jurassic World Evolution
 - lag - none
-- FPS - TBD
+- FPS host - 33 (30.06ms per frame)
+- FPS client - 191 (5.21ms per frame)
 
+![jurassic-world-evolution-parsec-metrics-basic.jpg](assets/img/tests/jurassic-world-evolution-parsec-metrics-basic.jpg)
 #### CS2
 - lag - TBD
 - FPS - TBD
@@ -260,9 +264,26 @@ Server summary/load during the game tests, hour (maximum):
 - lag - TBD
 - FPS - TBD
 - Anti Cheat - TBD
+#### Brawlhalla
+- lag - none
+- FPS host - 62 (15.93ms per frame)
+- FPS client - 114 (8.74ms per frame)
+- Anti Cheat - OK
+
+![brawlhalla-parsec-metrics-basic.png](assets/img/tests/brawlhalla-parsec-metrics-basic.png)
 
 ### 3D BenchMarks
 TBD
+
+### 3D Engines and Tools
+#### 3DS MAX
+TBD
+#### Unreal Engine Editor
+- lag - TBD
+- FPS - TBD
+#### Unity Editor
+- lag - TBD
+- FPS - TBD
 
 ## Bonus
 This is how our server looks like.
