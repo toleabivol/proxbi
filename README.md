@@ -219,7 +219,7 @@ I also created my own list of websites to be blocked in addition to the already 
 Buy me and my kids some [tea](https://github.com/sponsors/toleabivol) and get gratitude and private support from us :)
 
 ## Tests & Benchmarks
-(WIP - for now just a test with visual feeling no numbers, will do real benchmarks later)
+
 ### Games tests
 
 Test setup :
@@ -228,6 +228,7 @@ Test setup :
 - FHD / 1080p
 - One Monitor per thin client
 - Where you see host and client metric it means that host is the server and client is the thin client. For FPS you just take the lowest value from these 2 as that is the bottleneck.
+>**Parsec limits FPS to 60**
 
 One VM summary/load during the game tests, hour (maximum):
 ![proxmox-VM-summary-games-test.png](assets/img/proxmox-VM-summary-games-test.png)
@@ -237,10 +238,10 @@ Server summary/load during the game tests, hour (maximum):
 
 #### Fishing Planet
 - lag - none
-- FPS - TBD
+- FPS - 60
 #### Minecraft Bedrock/Java
 - lag - none
-- FPS - TBD
+- FPS - 60
 >In some mods with JAVA with Curseforge it jitters when moving but that I think is not from the proxBi (this guide) setup.
 
 #### Jurassic World Evolution
@@ -249,22 +250,23 @@ Server summary/load during the game tests, hour (maximum):
 - FPS client - 191 (5.21ms per frame)
 
 ![jurassic-world-evolution-parsec-metrics-basic.jpg](assets/img/tests/jurassic-world-evolution-parsec-metrics-basic.jpg)
-#### CS2
-- lag - TBD
-- FPS - TBD
-- Anti Cheat - TBD
+#### Counter-Strike 2 (CS2)
+- lag - none
+- FPS - 60
+- Anti Cheat - OK
+![CS2-parsec-metrics-basic.png](assets/img/tests/CS2-parsec-metrics-basic.png)
 #### War Thunder
-- lag - TBD
-- FPS - TBD
-- Anti Cheat - TBD
+- lag - critical, playable only on Low settings. However, Naval battle and any tutorial works on highest settings with no lag.
+- FPS - 5
+- Anti Cheat - OK
 #### Fortnite
 - lag - TBD
 - FPS - TBD
 - Anti Cheat - TBD
 #### Apex
-- lag - TBD
-- FPS - TBD
-- Anti Cheat - TBD
+- lag - N/A
+- FPS - N/A
+- Anti Cheat - KO
 #### Brawlhalla
 - lag - none
 - FPS host - 62 (15.93ms per frame)
@@ -274,6 +276,10 @@ Server summary/load during the game tests, hour (maximum):
 ![brawlhalla-parsec-metrics-basic.png](assets/img/tests/brawlhalla-parsec-metrics-basic.png)
 
 ### 3D BenchMarks
+### On one VM at a time
+TBD
+
+### On 2 VMs simultaneously 
 TBD
 
 ### 3D Engines and Tools
