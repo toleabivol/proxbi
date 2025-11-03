@@ -74,8 +74,9 @@ You can see [our build specs here bellow](#build-specs) specifically made for th
 - Thin clients or remote desktop clients for users (mini-PC, laptop, PC, Mac, Mobile etc.)
 - Hardware requirements:
   - Anything that would support h264 decoding and 50Mbps network
-  - Windows 10/11 , Mac, IOS, Android
-  - 8GB RAM
+  - OS: Windows 10/11(recommended), Mac, IOS, Android
+  - RAM: 8GB
+  - CPU: 2 Cores 2.2GHz
 
 ---
 
@@ -290,14 +291,32 @@ This is how our server looks like.
 ![server-real-pic.jpg](assets/img/server-real-pic.jpg)
 
 ### Build specs:
+#### Server
 - MB: [ASUS TUF GAMING B650-PLUS Mainboard Socket AMD AM5](https://amzn.to/4oFP3lY) - this one has 2 PCIE slots , one with PCI5 x16 and one PCI4 x4 . Therefore be careful what GPU you load into it as the second one might get capped. Or buy another MB that supports multiple PICE at x16.
 - CPU: [AMD Ryzen 9 7900 12 Cores 24 Threads](https://amzn.to/43BxECP)
 - RAM: [Patriot Viper Xtreme 5 DDR5 RAM 32GB (2X16GB) 6000MT/s CL30](https://amzn.to/47IWyml)
-- GPU: 2 x Nvidia RTX 2060 6GB (bought used from kleinanzeigen.de)
+- GPU: 2 x Nvidia RTX 2060 6GB (bought used)
 - Storage:
   - SSD (for proxmox/host OS) - 256GB (had one from a laptop)
   - NVME (for VMs) - [1TB Samsung 990 EVO Plus](https://amzn.to/4nmEPpt)
 - PSU: [Thermaltake Toughpower GT 850W](https://amzn.to/4hvL7C3)
 - Case: [NZXT H7 Flow](https://amzn.to/4ofgJ1l)
+
+#### Clients
+Mini PC (bought used ones)
+- MB: 
+- CPU: Intel 6200U 2.3GHz (recommend something newer that supports Win11)
+- RAM: 8GB
+- GPU: Intel HD 5500 4GB (integrated in the CPU)
+- Storage:
+  - SSD: 256GB
+- Network: Ethernet 1Gbps
+- Monitor: FHD 24"
+- OS: Windows 11 Home
+
+Here are some examples of mini-PCs that should work (I did not test them just matched the specs and watched for cost, make sure it works with your Monitor and other setup before buying! Some are refurbished):
+- [HP 18 cm Silent Mini PC Business Office Multimedia Computer | Intel®Pentium® 4400T 2x2.90GHz | 8GB DDR4 | 256GB SSD | USB3 | Windows 11 Prof](https://amzn.to/47GvqTX)
+- [Lenovo Mini PC Desktop Computer ThinkCentre M93p USDT Tiny Intel Core i5 240GB SSD 8GB Windows 11 Pro](https://amzn.to/3WCZBGB)
+- [Fujitsu Fast Mini PC with Intel Quad Core Silent Desktop Computer + Multimedia Calculator up to 2.8 GHz 8GB DDR4 RAM 128GB SSD Including Win 11 Pro](https://amzn.to/3LigQdS)
 
 *Links have affiliate id that bring me some commission in case you purchase. 
