@@ -260,9 +260,9 @@ Server summary/load during the game tests, hour (maximum):
 - FPS - 5
 - Anti Cheat - OK
 #### Fortnite
-- lag - TBD
-- FPS - TBD
-- Anti Cheat - TBD
+- lag - N/A
+- FPS - N/A
+- Anti Cheat - KO
 #### Apex
 - lag - N/A
 - FPS - N/A
